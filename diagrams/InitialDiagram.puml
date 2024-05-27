@@ -1,0 +1,125 @@
+@startuml
+interface Expression {
+    +double evaluate(Map<String, Double> variables)
+    +Set<String> getVariables()
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Variable {
+    -String name
+    +Variable(String name)
+    +double evaluate(Map<String, Double> variables)
+    +Set<String> getVariables()
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Constant {
+    -double value
+    +Constant(double value)
+    +double evaluate(Map<String, Double> variables)
+    +Set<String> getVariables()
+    +void accept(ExpressionVisitor visitor)
+}
+
+abstract class BinaryOperation {
+    -Expression left
+    -Expression right
+    +BinaryOperation(Expression left, Expression right)
+    +double evaluate(Map<String, Double> variables)
+    +Set<String> getVariables()
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Addition {
+    +Addition(Expression left, Expression right)
+    +double evaluate(Map<String, Double> variables)
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Subtraction {
+    +Subtraction(Expression left, Expression right)
+    +double evaluate(Map<String, Double> variables)
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Multiplication {
+    +Multiplication(Expression left, Expression right)
+    +double evaluate(Map<String, Double> variables)
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Division {
+    +Division(Expression left, Expression right)
+    +double evaluate(Map<String, Double> variables)
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Exponentiation {
+    +Exponentiation(Expression left, Expression right)
+    +double evaluate(Map<String, Double> variables)
+    +void accept(ExpressionVisitor visitor)
+}
+
+class Modulo {
+    +Modulo(Expression left, Expression right)
+    +double evaluate(Map<String, Double> variables)
+    +void accept(ExpressionVisitor visitor)
+}
+
+class SquareRoot {
+    -Expression operand
+    +SquareRoot(Expression operand)
+    +double evaluate(Map<String, Double> variables)
+    +Set<String> getVariables()
+    +void accept(ExpressionVisitor visitor)
+}
+
+interface ExpressionVisitor {
+    +void visit(Variable variable)
+    +void visit(Constant constant)
+    +void visit(Addition addition)
+    +void visit(Subtraction subtraction)
+    +void visit(Multiplication multiplication)
+    +void visit(Division division)
+    +void visit(Exponentiation exponentiation)
+    +void visit(Modulo modulo)
+    +void visit(SquareRoot squareRoot)
+}
+
+class VariableCollector {
+    -Set<String> variables
+    +void visit(Variable variable)
+    +void visit(Constant constant)
+    +void visit(Addition addition)
+    +void visit(Subtraction subtraction)
+    +void visit(Multiplication multiplication)
+    +void visit(Division division)
+    +void visit(Exponentiation exponentiation)
+    +void visit(Modulo modulo)
+    +void visit(SquareRoot squareRoot)
+    +Set<String> getVariables()
+}
+
+Expression <|-- Variable
+Expression <|-- Constant
+Expression <|-- BinaryOperation
+BinaryOperation <|-- Addition
+BinaryOperation <|-- Subtraction
+BinaryOperation <|-- Multiplication
+BinaryOperation <|-- Division
+BinaryOperation <|-- Exponentiation
+BinaryOperation <|-- Modulo
+Expression <|-- SquareRoot
+
+Variable --> ExpressionVisitor : visit
+Constant --> ExpressionVisitor : visit
+Addition --> ExpressionVisitor : visit
+Subtraction --> ExpressionVisitor : visit
+Multiplication --> ExpressionVisitor : visit
+Division --> ExpressionVisitor : visit
+Exponentiation --> ExpressionVisitor : visit
+Modulo --> ExpressionVisitor : visit
+SquareRoot --> ExpressionVisitor : visit
+
+ExpressionVisitor <|-- VariableCollector
+@enduml
