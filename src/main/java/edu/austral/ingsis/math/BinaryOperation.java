@@ -25,8 +25,6 @@ public abstract class BinaryOperation implements Expression {
   @Override
   public abstract Double evaluate(Map<String, Double> values);
 
-
-
   @Override
   public Set<String> getVariables() {
     Set<String> variables = new HashSet<>();
@@ -41,5 +39,4 @@ public abstract class BinaryOperation implements Expression {
   }
 
   public abstract String getOperand();
-
 }

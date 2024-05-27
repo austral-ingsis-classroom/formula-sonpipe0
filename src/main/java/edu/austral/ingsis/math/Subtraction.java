@@ -2,7 +2,7 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Subtraction extends BinaryOperation{
+public class Subtraction extends BinaryOperation {
 
   public Subtraction(Expression left, Expression right) {
     super(left, right);

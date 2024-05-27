@@ -1,13 +1,10 @@
 package edu.austral.ingsis.math;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+
+import java.util.Collections;
+import org.junit.jupiter.api.Test;
 
 public class ResolutionTest {
 
@@ -32,7 +29,8 @@ public class ResolutionTest {
   /** Case (9 / 2) * 3 */
   @Test
   public void shouldResolveSimpleFunction3() {
-    Expression expression = new Multiplication(new Division(new Constant(9.0), new Constant(2.0)), new Constant(3.0));
+    Expression expression =
+        new Multiplication(new Division(new Constant(9.0), new Constant(2.0)), new Constant(3.0));
     final Double result = expression.evaluate(Collections.emptyMap());
 
     assertThat(result, equalTo(13.5));
@@ -41,7 +39,8 @@ public class ResolutionTest {
   /** Case (27 / 6) ^ 2 */
   @Test
   public void shouldResolveSimpleFunction4() {
-    Expression expression = new Power(new Division(new Constant(27.0), new Constant(6.0)), new Constant(2.0));
+    Expression expression =
+        new Power(new Division(new Constant(27.0), new Constant(6.0)), new Constant(2.0));
     final Double result = expression.evaluate(Collections.emptyMap());
 
     assertThat(result, equalTo(20.25));
@@ -77,7 +76,9 @@ public class ResolutionTest {
   /** Case (5 - 5) * 8 */
   @Test
   public void shouldResolveSimpleFunction8() {
-    Expression expression = new Multiplication(new Subtraction(new Constant(5.0), new Constant(5.0)), new Constant(8.0));
+    Expression expression =
+        new Multiplication(
+            new Subtraction(new Constant(5.0), new Constant(5.0)), new Constant(8.0));
     final Double result = expression.evaluate(Collections.emptyMap());
 
     assertThat(result, equalTo(0d));

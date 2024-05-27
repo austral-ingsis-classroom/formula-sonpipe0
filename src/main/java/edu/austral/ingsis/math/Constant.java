@@ -3,7 +3,7 @@ package edu.austral.ingsis.math;
 import java.util.Map;
 import java.util.Set;
 
-public class Constant implements Expression{
+public class Constant implements Expression {
 
   private final Double value;
 
@@ -11,9 +11,8 @@ public class Constant implements Expression{
     this.value = value;
   }
 
-
   @Override
-  public Double evaluate(Map<String,Double> values) {
+  public Double evaluate(Map<String, Double> values) {
     return value;
   }
 

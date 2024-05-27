@@ -3,7 +3,7 @@ package edu.austral.ingsis.math;
 import java.util.Map;
 import java.util.Set;
 
-public class Root implements Expression{
+public class Root implements Expression {
 
   private final Expression expression;
 
@@ -26,7 +26,5 @@ public class Root implements Expression{
   }
 
   @Override
-  public void accept(ExpressionVisitor visitor) {
-
-  }
+  public void accept(ExpressionVisitor visitor) {}
 }

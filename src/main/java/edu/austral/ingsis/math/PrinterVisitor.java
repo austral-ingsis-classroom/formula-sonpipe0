@@ -37,8 +37,6 @@ public class PrinterVisitor implements ExpressionVisitor {
     level--;
   }
 
-
-
   @Override
   public void visit(Root root) {
     stringBuilder.append("√(");
@@ -52,5 +50,4 @@ public class PrinterVisitor implements ExpressionVisitor {
     absoluteValue.getOperand().accept(this);
     stringBuilder.append("|");
   }
-
 }

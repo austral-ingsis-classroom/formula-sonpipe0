@@ -2,8 +2,7 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Power extends BinaryOperation{
-
+public class Power extends BinaryOperation {
 
   public Power(Expression left, Expression right) {
     super(left, right);

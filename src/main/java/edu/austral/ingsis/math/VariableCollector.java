@@ -23,7 +23,6 @@ public class VariableCollector implements ExpressionVisitor {
     return;
   }
 
-
   @Override
   public void visit(AbsoluteValue modulo) {
     modulo.getOperand().accept(this);
@@ -33,7 +32,6 @@ public class VariableCollector implements ExpressionVisitor {
   public void visit(Root squareRoot) {
     squareRoot.getOperand().accept(this);
   }
-
 
   public Set<String> getVariables() {
     return variables;

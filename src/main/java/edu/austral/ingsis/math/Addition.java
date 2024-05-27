@@ -2,8 +2,7 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Addition extends BinaryOperation{
-
+public class Addition extends BinaryOperation {
 
   public Addition(Expression left, Expression right) {
     super(left, right);

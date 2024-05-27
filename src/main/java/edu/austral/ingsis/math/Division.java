@@ -2,7 +2,7 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Division extends BinaryOperation{
+public class Division extends BinaryOperation {
 
   public Division(Expression left, Expression right) {
     super(left, right);

@@ -1,12 +1,11 @@
 package edu.austral.ingsis.math;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
+
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class ListVariablesTest {
 
@@ -44,7 +43,8 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction3() {
     // Arrange
-    Expression expression = new Multiplication(new Division(new Constant(9), new Variable("x")), new Variable("y"));
+    Expression expression =
+        new Multiplication(new Division(new Constant(9), new Variable("x")), new Variable("y"));
     VariableCollector collector = new VariableCollector();
 
     // Act
@@ -59,7 +59,8 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction4() {
     // Arrange
-    Expression expression = new Power(new Division(new Constant(27), new Variable("a")), new Variable("b"));
+    Expression expression =
+        new Power(new Division(new Constant(27), new Variable("a")), new Variable("b"));
     VariableCollector collector = new VariableCollector();
 
     // Act
@@ -89,7 +90,8 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction6() {
     // Arrange
-    Expression expression = new Subtraction(new AbsoluteValue(new Variable("value")), new Constant(8));
+    Expression expression =
+        new Subtraction(new AbsoluteValue(new Variable("value")), new Constant(8));
     VariableCollector collector = new VariableCollector();
 
     // Act
@@ -104,7 +106,8 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction7() {
     // Arrange
-    Expression expression = new Subtraction(new Constant(8), new AbsoluteValue(new Variable("value")));
+    Expression expression =
+        new Subtraction(new Constant(8), new AbsoluteValue(new Variable("value")));
     VariableCollector collector = new VariableCollector();
 
     // Act
@@ -119,7 +122,8 @@ public class ListVariablesTest {
   @Test
   public void shouldListVariablesFunction8() {
     // Arrange
-    Expression expression = new Multiplication(new Subtraction(new Constant(5), new Variable("i")), new Constant(8));
+    Expression expression =
+        new Multiplication(new Subtraction(new Constant(5), new Variable("i")), new Constant(8));
     VariableCollector collector = new VariableCollector();
 
     // Act

@@ -1,12 +1,11 @@
 package edu.austral.ingsis.math;
 
-import org.junit.jupiter.api.Test;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
+import org.junit.jupiter.api.Test;
 
 public class ResolutionWithVariablesTest {
 
@@ -37,7 +36,8 @@ public class ResolutionWithVariablesTest {
   /** Case (9 / x) * y where x = 3 and y = 4 */
   @Test
   public void shouldResolveFunction3() {
-    Expression expression = new Multiplication(new Division(new Constant(9.0), new Variable("x")), new Variable("y"));
+    Expression expression =
+        new Multiplication(new Division(new Constant(9.0), new Variable("x")), new Variable("y"));
     Map<String, Double> variables = new HashMap<>();
     variables.put("x", 3.0);
     variables.put("y", 4.0);
@@ -50,7 +50,8 @@ public class ResolutionWithVariablesTest {
   /** Case (27 / a) ^ b where a = 9 and b = 3 */
   @Test
   public void shouldResolveFunction4() {
-    Expression expression = new Power(new Division(new Constant(27.0), new Variable("a")), new Variable("b"));
+    Expression expression =
+        new Power(new Division(new Constant(27.0), new Variable("a")), new Variable("b"));
     Map<String, Double> variables = new HashMap<>();
     variables.put("a", 9.0);
     variables.put("b", 3.0);
@@ -75,7 +76,8 @@ public class ResolutionWithVariablesTest {
   /** Case |value| - 8 where value = 8 */
   @Test
   public void shouldResolveFunction6() {
-    Expression expression = new Subtraction(new AbsoluteValue(new Variable("value")), new Constant(8.0));
+    Expression expression =
+        new Subtraction(new AbsoluteValue(new Variable("value")), new Constant(8.0));
     Map<String, Double> variables = new HashMap<>();
     variables.put("value", 8.0);
 
@@ -87,7 +89,8 @@ public class ResolutionWithVariablesTest {
   /** Case |value| - 8 where value = 8 */
   @Test
   public void shouldResolveFunction7() {
-    Expression expression = new Subtraction(new AbsoluteValue(new Variable("value")), new Constant(8.0));
+    Expression expression =
+        new Subtraction(new AbsoluteValue(new Variable("value")), new Constant(8.0));
     Map<String, Double> variables = new HashMap<>();
     variables.put("value", 8.0);
 
@@ -99,7 +102,9 @@ public class ResolutionWithVariablesTest {
   /** Case (5 - i) * 8 where i = 2 */
   @Test
   public void shouldResolveFunction8() {
-    Expression expression = new Multiplication(new Subtraction(new Constant(5.0), new Variable("i")), new Constant(8.0));
+    Expression expression =
+        new Multiplication(
+            new Subtraction(new Constant(5.0), new Variable("i")), new Constant(8.0));
     Map<String, Double> variables = new HashMap<>();
     variables.put("i", 2.0);
 

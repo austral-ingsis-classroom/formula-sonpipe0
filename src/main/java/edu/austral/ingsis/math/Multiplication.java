@@ -2,7 +2,7 @@ package edu.austral.ingsis.math;
 
 import java.util.Map;
 
-public class Multiplication extends BinaryOperation{
+public class Multiplication extends BinaryOperation {
 
   public Multiplication(Expression left, Expression right) {
     super(left, right);

@@ -10,5 +10,4 @@ public interface Expression {
   Set<String> getVariables();
 
   void accept(ExpressionVisitor visitor);
-
 }
