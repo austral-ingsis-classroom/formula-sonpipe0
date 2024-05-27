@@ -28,41 +28,48 @@ abstract class BinaryOperation {
     +double evaluate(Map<String, Double> variables)
     +Set<String> getVariables()
     +void accept(ExpressionVisitor visitor)
+    +String getOperand()
 }
 
 class Addition {
     +Addition(Expression left, Expression right)
     +double evaluate(Map<String, Double> variables)
     +void accept(ExpressionVisitor visitor)
+    +String getOperand()
 }
 
 class Subtraction {
     +Subtraction(Expression left, Expression right)
     +double evaluate(Map<String, Double> variables)
     +void accept(ExpressionVisitor visitor)
+    +String getOperand()
 }
 
 class Multiplication {
     +Multiplication(Expression left, Expression right)
     +double evaluate(Map<String, Double> variables)
     +void accept(ExpressionVisitor visitor)
+    +String getOperand()
 }
 
 class Division {
     +Division(Expression left, Expression right)
     +double evaluate(Map<String, Double> variables)
     +void accept(ExpressionVisitor visitor)
+    +String getOperand()
 }
 
 class Exponentiation {
     +Exponentiation(Expression left, Expression right)
     +double evaluate(Map<String, Double> variables)
     +void accept(ExpressionVisitor visitor)
+    +String getOperand()
 }
 
 class Modulo {
-    +Modulo(Expression left, Expression right)
+    +Modulo(Expression expression)
     +double evaluate(Map<String, Double> variables)
+    +Set<String> getVariables(Map<String, Double> variables)
     +void accept(ExpressionVisitor visitor)
 }
 
@@ -90,14 +97,24 @@ class VariableCollector {
     -Set<String> variables
     +void visit(Variable variable)
     +void visit(Constant constant)
-    +void visit(Addition addition)
-    +void visit(Subtraction subtraction)
-    +void visit(Multiplication multiplication)
-    +void visit(Division division)
-    +void visit(Exponentiation exponentiation)
     +void visit(Modulo modulo)
     +void visit(SquareRoot squareRoot)
+    +void visit(BinaryOperation binaryOperation)
     +Set<String> getVariables()
+}
+
+class PrintVisitor {
+    -Stringbuilder builder
+    -int level
+    +void visit(Variable variable)
+    +void visit(Constant constant)
+    +void visit(Modulo modulo)
+    +void visit(SquareRoot squareRoot)
+    +void visit(BinaryOperation binaryOperation)
+}
+
+class Printer {
+    +String print(Expression expression)
 }
 
 Expression <|-- Variable
@@ -107,7 +124,7 @@ BinaryOperation <|-- Addition
 BinaryOperation <|-- Subtraction
 BinaryOperation <|-- Multiplication
 BinaryOperation <|-- Division
-BinaryOperation <|-- Exponentiation
+Expression <|-- Exponentiation
 BinaryOperation <|-- Modulo
 Expression <|-- SquareRoot
 
@@ -122,4 +139,7 @@ Modulo --> ExpressionVisitor : visit
 SquareRoot --> ExpressionVisitor : visit
 
 ExpressionVisitor <|-- VariableCollector
+ExpressionVisitor <|-- PrintVisitor
+
+VariableCollector <-- Printer : print
 @enduml
