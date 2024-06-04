@@ -32,11 +32,4 @@ public abstract class BinaryOperation implements Expression {
     variables.addAll(right.getVariables());
     return variables;
   }
-
-  @Override
-  public void accept(ExpressionVisitor visitor) {
-    visitor.visit(this);
-  }
-
-  public abstract String getOperand();
 }

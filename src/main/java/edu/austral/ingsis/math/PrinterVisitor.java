@@ -25,12 +25,64 @@ public class PrinterVisitor implements ExpressionVisitor {
   }
 
   @Override
-  public void visit(BinaryOperation expression) {
+  public void visit(Addition expression) {
     level++;
     if (level > 1) stringBuilder.append("(");
     expression.getLeft().accept(this);
     stringBuilder.append(" ");
-    stringBuilder.append(expression.getOperand());
+    stringBuilder.append("+");
+    stringBuilder.append(" ");
+    expression.getRight().accept(this);
+    if (level > 1) stringBuilder.append(")");
+    level--;
+  }
+
+  @Override
+  public void visit(Subtraction expression) {
+    level++;
+    if (level > 1) stringBuilder.append("(");
+    expression.getLeft().accept(this);
+    stringBuilder.append(" ");
+    stringBuilder.append("-");
+    stringBuilder.append(" ");
+    expression.getRight().accept(this);
+    if (level > 1) stringBuilder.append(")");
+    level--;
+  }
+
+  @Override
+  public void visit(Power expression) {
+    level++;
+    if (level > 1) stringBuilder.append("(");
+    expression.getLeft().accept(this);
+    stringBuilder.append(" ");
+    stringBuilder.append("^");
+    stringBuilder.append(" ");
+    expression.getRight().accept(this);
+    if (level > 1) stringBuilder.append(")");
+    level--;
+  }
+
+  @Override
+  public void visit(Multiplication expression) {
+    level++;
+    if (level > 1) stringBuilder.append("(");
+    expression.getLeft().accept(this);
+    stringBuilder.append(" ");
+    stringBuilder.append("*");
+    stringBuilder.append(" ");
+    expression.getRight().accept(this);
+    if (level > 1) stringBuilder.append(")");
+    level--;
+  }
+
+  @Override
+  public void visit(Division expression) {
+    level++;
+    if (level > 1) stringBuilder.append("(");
+    expression.getLeft().accept(this);
+    stringBuilder.append(" ");
+    stringBuilder.append("/");
     stringBuilder.append(" ");
     expression.getRight().accept(this);
     if (level > 1) stringBuilder.append(")");

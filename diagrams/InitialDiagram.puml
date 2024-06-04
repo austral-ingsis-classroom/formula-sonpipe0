@@ -74,7 +74,7 @@ class Modulo {
 }
 
 class SquareRoot {
-    -Expression operand
+    -Expression expression
     +SquareRoot(Expression operand)
     +double evaluate(Map<String, Double> variables)
     +Set<String> getVariables()
@@ -84,13 +84,9 @@ class SquareRoot {
 interface ExpressionVisitor {
     +void visit(Variable variable)
     +void visit(Constant constant)
-    +void visit(Addition addition)
-    +void visit(Subtraction subtraction)
-    +void visit(Multiplication multiplication)
-    +void visit(Division division)
-    +void visit(Exponentiation exponentiation)
     +void visit(Modulo modulo)
     +void visit(SquareRoot squareRoot)
+    +void visit(BinaryOperation binaryOperation)
 }
 
 class VariableCollector {
@@ -124,8 +120,8 @@ BinaryOperation <|-- Addition
 BinaryOperation <|-- Subtraction
 BinaryOperation <|-- Multiplication
 BinaryOperation <|-- Division
-Expression <|-- Exponentiation
-BinaryOperation <|-- Modulo
+BinaryOperation <|-- Exponentiation
+Expression <|-- Modulo
 Expression <|-- SquareRoot
 
 Variable --> ExpressionVisitor : visit
@@ -141,5 +137,5 @@ SquareRoot --> ExpressionVisitor : visit
 ExpressionVisitor <|-- VariableCollector
 ExpressionVisitor <|-- PrintVisitor
 
-VariableCollector <-- Printer : print
+PrintVisitor <-- Printer : print
 @enduml

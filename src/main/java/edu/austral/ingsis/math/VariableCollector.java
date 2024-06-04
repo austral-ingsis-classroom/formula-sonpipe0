@@ -13,12 +13,6 @@ public class VariableCollector implements ExpressionVisitor {
   }
 
   @Override
-  public void visit(BinaryOperation expression) {
-    expression.getLeft().accept(this);
-    expression.getRight().accept(this);
-  }
-
-  @Override
   public void visit(Constant constant) {
     return;
   }
@@ -31,6 +25,36 @@ public class VariableCollector implements ExpressionVisitor {
   @Override
   public void visit(Root squareRoot) {
     squareRoot.getOperand().accept(this);
+  }
+
+  @Override
+  public void visit(Addition addition) {
+    addition.getLeft().accept(this);
+    addition.getRight().accept(this);
+  }
+
+  @Override
+  public void visit(Subtraction subtraction) {
+    subtraction.getLeft().accept(this);
+    subtraction.getRight().accept(this);
+  }
+
+  @Override
+  public void visit(Multiplication multiplication) {
+    multiplication.getLeft().accept(this);
+    multiplication.getRight().accept(this);
+  }
+
+  @Override
+  public void visit(Division division) {
+    division.getLeft().accept(this);
+    division.getRight().accept(this);
+  }
+
+  @Override
+  public void visit(Power power) {
+    power.getLeft().accept(this);
+    power.getRight().accept(this);
   }
 
   public Set<String> getVariables() {

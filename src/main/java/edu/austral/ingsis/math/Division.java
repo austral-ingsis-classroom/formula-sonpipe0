@@ -14,7 +14,7 @@ public class Division extends BinaryOperation {
   }
 
   @Override
-  public String getOperand() {
-    return "/";
+  public void accept(ExpressionVisitor visitor) {
+    visitor.visit(this);
   }
 }
